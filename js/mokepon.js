@@ -40,16 +40,15 @@
         let ataqueAleatorio = aleatorio(1,3); 
 
         if(ataqueAleatorio == 1){
-            ataqueEnemigo = 'FUEGO'
+            ataqueEnemigo ='FUEGO'
 
         }else if(ataqueAleatorio == 2){
-            ataqueEnemigo = 'AGUA'
+            ataqueEnemigo ='AGUA'
 
         }else{
-            ataqueEnemigo = 'TIERRA'
+            ataqueEnemigo ='TIERRA'
         }
-
-        crearMensaje()
+          combate();
     }
 
     // Funcion para seleccionar un numero aleatorio entre dos numeros
@@ -57,32 +56,31 @@
         return Math.floor(Math.random() * (max - min + 1 ) + min)
     }
 
+    // Funcion para el combate 
+    function combate(){
+        if(ataqueEnemigo == ataqueJugador){
+            crearMensaje("EMPATE")    
+        }else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA'){
+            crearMensaje("GANASTE")  
+        }else if(ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO'){
+            crearMensaje("GANASTE")  
+        }else if(ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA'){
+            crearMensaje("GANASTE")
+        }else {
+            crearMensaje("PERDISTE")
+        }
+        
+    }
+
     // Funcion para crear un mensaje
-    function crearMensaje(){
+    function crearMensaje(resultado){
+        console.log(resultado)
         let sectionMensajes = document.getElementById('mensajes')
         let parrafo = document.createElement('p')
-        parrafo.innerHTML = 'Tu mascota atacó con '+ ataqueJugador + ', la mascota del enemigo atacó con '+ ataqueEnemigo +' - PENDIENTE'
+        parrafo.innerHTML = "Tu mascota ataco con "+ ataqueJugador + " la mascota del enemigo ataco con "+ ataqueEnemigo + " - "+ resultado
         sectionMensajes.appendChild(parrafo)
     }
-
-
-    // Funcion para el combate 
-
-    function combate(){
-        if(ataqueEnemigo = ataqueJugador){
-            
-        }else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA'){
-
-        }else if(ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO'){
-
-        }else if(ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA'){
-
-        }else {
-            
-        }
-    }
-
-  
+      
     function alertaSeleccionasteMascota(){
         let inputHipodoge = document.getElementById('hipodoge')
         let inputCapipepo = document.getElementById('capipepo')
